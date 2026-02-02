@@ -23,7 +23,7 @@ body{
 }
 
 /* ===============================
-   VIDEO BACKGROUND ONLY
+   VIDEO BACKGROUND
    =============================== */
 .video-bg{
   position:fixed;
@@ -147,13 +147,27 @@ body{
 <script>
 const video = document.getElementById("bgVideo");
 
-/* Auto-unmute on first interaction (no popup, no message) */
-document.addEventListener("click", () => {
+/* ANY TOUCH EVENT → UNMUTE */
+function enableAudio(){
   if(video.muted){
     video.muted = false;
     video.play();
   }
-}, { once:true });
+  removeListeners();
+}
+
+function removeListeners(){
+  document.removeEventListener("touchstart", enableAudio);
+  document.removeEventListener("touchmove", enableAudio);
+  document.removeEventListener("wheel", enableAudio);
+  document.removeEventListener("click", enableAudio);
+}
+
+/* Listen to ALL natural interactions */
+document.addEventListener("touchstart", enableAudio, { once:true });
+document.addEventListener("touchmove", enableAudio, { once:true });
+document.addEventListener("wheel", enableAudio, { once:true });
+document.addEventListener("click", enableAudio, { once:true });
 
 /* Dynamic UPI */
 const params = new URLSearchParams(window.location.search);
