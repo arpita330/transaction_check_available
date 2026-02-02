@@ -54,7 +54,6 @@ body{
     0 30px 90px rgba(0,0,0,0.9);
 
   color:#00252c;
-  z-index:2;
 }
 
 @keyframes cardGlow{
@@ -115,10 +114,10 @@ body{
 <video
   id="bgVideo"
   class="video-bg"
-  autoplay
   loop
-  muted
   playsinline
+  muted
+  preload="auto"
 >
   <source src="https://raw.githubusercontent.com/arpita330/transaction_check_available/main/night%20sky~2.mp4" type="video/mp4">
 </video>
@@ -143,17 +142,22 @@ body{
 <script>
 const video = document.getElementById("bgVideo");
 
-/* TOUCH / CLICK ANYWHERE = UNMUTE */
-function enableSound(){
-  if(video.muted){
-    video.muted = false;
-    video.play();
+/* Ensure video is ready */
+video.load();
+
+/* TOUCH ANYWHERE = FORCE PLAY + UNMUTE */
+function startVideoWithSound(){
+  video.muted = false;
+
+  const playPromise = video.play();
+  if(playPromise !== undefined){
+    playPromise.catch(()=>{});
   }
 }
 
-/* Mobile + Desktop */
-document.addEventListener("touchstart", enableSound, { once:true });
-document.addEventListener("click", enableSound, { once:true });
+/* Works on all devices */
+document.addEventListener("touchstart", startVideoWithSound, { once:true });
+document.addEventListener("click", startVideoWithSound, { once:true });
 
 /* Dynamic UPI */
 const params = new URLSearchParams(window.location.search);
