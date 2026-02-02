@@ -13,17 +13,17 @@
             justify-content: center;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-            /* 🔵🟣 Cool neon background (NO yellow/green) */
+            /* 🌊 Deep aqua neon background */
             background: linear-gradient(
                 120deg,
-                #0d47ff,
-                #2979ff,
-                #651fff,
-                #7c4dff,
-                #b388ff
+                #001f3f,
+                #003b6f,
+                #005f73,
+                #0077b6,
+                #0096c7
             );
             background-size: 400% 400%;
-            animation: bgMove 14s ease infinite;
+            animation: bgMove 16s ease infinite;
         }
 
         @keyframes bgMove {
@@ -32,7 +32,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 🔴🩷 Warm neon card (NO yellow/green) */
+        /* 💎 Electric aqua neon card */
         .card {
             width: 100%;
             max-width: 360px;
@@ -42,20 +42,20 @@
 
             background: linear-gradient(
                 135deg,
-                #ff1744,
-                #ff4081,
-                #e040fb,
-                #d500f9,
-                #f50057
+                #00f5ff,
+                #00e5ff,
+                #1de9ff,
+                #00bcd4,
+                #00ffff
             );
             background-size: 300% 300%;
             animation: cardMove 10s ease infinite;
 
             box-shadow:
-                0 0 30px rgba(255, 64, 129, 0.5),
-                0 25px 50px rgba(0,0,0,0.35);
+                0 0 35px rgba(0, 245, 255, 0.75),
+                0 30px 60px rgba(0,0,0,0.45);
 
-            color: #ffffff;
+            color: #002b36;
         }
 
         @keyframes cardMove {
@@ -68,7 +68,6 @@
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 14px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.35);
         }
 
         .amount {
@@ -77,16 +76,16 @@
         }
 
         .amount span {
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .payee {
             font-size: 14px;
-            opacity: 0.9;
+            opacity: 0.85;
             margin-bottom: 24px;
         }
 
-        /* 🔵 Button stays blue to avoid green/yellow */
+        /* 🔹 Dark aqua button for contrast */
         .pay-btn {
             width: 100%;
             padding: 14px;
@@ -98,12 +97,12 @@
 
             background: linear-gradient(
                 90deg,
-                #2979ff,
-                #651fff
+                #003b6f,
+                #005f73
             );
 
-            color: #ffffff;
-            box-shadow: 0 0 18px rgba(41, 121, 255, 0.8);
+            color: #e0fbff;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.9);
         }
 
         .pay-btn:active {
