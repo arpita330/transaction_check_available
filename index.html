@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UPI Galaxy</title>
+<title>Milky Way UPI</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -17,94 +18,115 @@ body{
   font-family:system-ui,-apple-system,BlinkMacSystemFont;
 }
 
-/* === DEEP SPACE BASE === */
+/* === TRUE BLACK BASE === */
 .space{
   position:fixed;
   inset:0;
-  background:
-    radial-gradient(circle at 50% 50%, #050014 0%, #000 65%);
-  z-index:-10;
+  background:#000;
+  z-index:-20;
 }
 
-/* === MILKY WAY DUST LANES === */
-.milkyway{
+/* === GALACTIC PLANE (DIAGONAL) === */
+.galaxy{
   position:fixed;
-  inset:-40%;
+  inset:-60%;
   background:
-    radial-gradient(ellipse at 40% 50%, rgba(0,190,255,.18), transparent 60%),
-    radial-gradient(ellipse at 60% 52%, rgba(140,90,255,.22), transparent 62%),
-    radial-gradient(ellipse at 50% 48%, rgba(90,70,200,.28), transparent 65%);
-  filter: blur(50px);
-  animation: galaxyDrift 220s ease-in-out infinite;
-  z-index:-8;
+    radial-gradient(ellipse at 40% 55%, rgba(0,180,255,.22), transparent 58%),
+    radial-gradient(ellipse at 60% 50%, rgba(120,80,255,.28), transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(90,70,200,.35), transparent 65%),
+    radial-gradient(ellipse at 50% 52%, rgba(0,0,0,.6), transparent 40%);
+  transform:rotate(-18deg);
+  filter: blur(55px);
+  animation: galaxyDrift 360s ease-in-out infinite;
+  z-index:-15;
 }
 
 @keyframes galaxyDrift{
-  0%{transform:translate(0,0) scale(1)}
-  50%{transform:translate(-4%,2%) scale(1.04)}
-  100%{transform:translate(0,0) scale(1)}
+  0%{transform:rotate(-18deg) translate(0,0) scale(1)}
+  50%{transform:rotate(-18deg) translate(-2%,1%) scale(1.05)}
+  100%{transform:rotate(-18deg) translate(0,0) scale(1)}
 }
 
-/* === NEBULA FOG (SUBTLE) === */
+/* === DUST LANES (DARK STRUCTURE) === */
+.dust{
+  position:fixed;
+  inset:-50%;
+  background:
+    radial-gradient(circle at 45% 50%, rgba(0,0,0,.75), transparent 45%),
+    radial-gradient(circle at 55% 52%, rgba(0,0,0,.6), transparent 50%);
+  transform:rotate(-18deg);
+  filter: blur(40px);
+  animation:dustMove 420s linear infinite;
+  z-index:-14;
+}
+
+@keyframes dustMove{
+  from{transform:rotate(-18deg) translate(0,0)}
+  to{transform:rotate(-18deg) translate(1.5%,1%)}
+}
+
+/* === NEBULA GAS (VERY SUBTLE) === */
 .nebula{
   position:fixed;
   inset:-50%;
   background:
-    radial-gradient(circle at 30% 40%, rgba(80,60,200,.22), transparent 55%),
-    radial-gradient(circle at 70% 60%, rgba(0,200,255,.18), transparent 58%);
-  filter: blur(60px);
-  animation: fogFloat 180s linear infinite;
-  z-index:-7;
+    radial-gradient(circle at 30% 40%, rgba(90,70,200,.18), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(0,160,255,.15), transparent 62%);
+  filter: blur(70px);
+  animation:nebulaFloat 300s linear infinite;
+  z-index:-13;
 }
 
-@keyframes fogFloat{
-  from{transform:translate(0,0)}
-  to{transform:translate(3%,2%)}
+@keyframes nebulaFloat{
+  to{transform:translate(2%,1%)}
 }
 
-/* === STAR DEPTH === */
+/* === STAR FIELDS (TRUE DEPTH) === */
 .stars,
 .stars::before,
 .stars::after{
   position:fixed;
   inset:0;
   content:"";
-  background-repeat:repeat;
 }
 
 .stars{
   background-image:radial-gradient(1px 1px at 20% 30%, white, transparent);
-  background-size:320px 320px;
-  animation:starsMove1 200s linear infinite;
-  z-index:-6;
+  background-size:340px 340px;
+  animation:stars1 240s linear infinite;
+  z-index:-12;
 }
 
 .stars::before{
   background-image:
-    radial-gradient(1px 1px at 70% 60%, white, transparent),
-    radial-gradient(1px 1px at 40% 80%, white, transparent);
-  background-size:220px 220px;
-  animation:starsMove2 140s linear infinite;
+    radial-gradient(1px 1px at 60% 80%, white, transparent),
+    radial-gradient(1px 1px at 80% 20%, white, transparent);
+  background-size:240px 240px;
+  animation:stars2 160s linear infinite;
 }
 
 .stars::after{
-  background-image:
-    radial-gradient(2px 2px at 50% 50%, white, transparent);
+  background-image:radial-gradient(2px 2px at 50% 50%, white, transparent);
   background-size:160px 160px;
-  animation:starsMove3 90s linear infinite;
+  animation:stars3 100s linear infinite;
 }
 
-@keyframes starsMove1{
-  to{background-position:-600px 400px}
-}
-@keyframes starsMove2{
-  to{background-position:-400px 300px}
-}
-@keyframes starsMove3{
-  to{background-position:-250px 200px}
+@keyframes stars1{to{background-position:-500px 300px}}
+@keyframes stars2{to{background-position:-300px 200px}}
+@keyframes stars3{to{background-position:-200px 150px}}
+
+/* === FILM GRAIN (REALISM BOOST) === */
+.noise{
+  position:fixed;
+  inset:0;
+  background:
+    repeating-radial-gradient(circle, rgba(255,255,255,.015) 0, transparent 1px);
+  opacity:.05;
+  pointer-events:none;
+  z-index:-5;
 }
 
-/* === PAYMENT CARD (AQUA NEON) === */
+/* === CARD (AQUA NEON) === */
 .card{
   width:360px;
   padding:28px 24px;
@@ -112,10 +134,10 @@ body{
   text-align:center;
   background:linear-gradient(135deg,#00f5ff,#1de9ff,#00ffff,#00bcd4);
   background-size:300% 300%;
-  animation:cardGlow 9s ease infinite;
+  animation:cardGlow 10s ease infinite;
   box-shadow:
-    0 0 60px rgba(0,245,255,1),
-    0 30px 80px rgba(0,0,0,.8);
+    0 0 70px rgba(0,245,255,1),
+    0 30px 90px rgba(0,0,0,.85);
   color:#00252c;
   z-index:5;
 }
@@ -138,9 +160,9 @@ body{
   border-radius:12px;
   font-size:18px;
   font-weight:700;
-  background:#020024;
+  background:#010015;
   color:#e0fbff;
-  box-shadow:0 0 25px rgba(0,245,255,.9);
+  box-shadow:0 0 30px rgba(0,245,255,1);
 }
 
 .pay-btn:active{transform:scale(.96)}
@@ -150,9 +172,11 @@ body{
 
 <body>
 <div class="space"></div>
-<div class="milkyway"></div>
+<div class="galaxy"></div>
+<div class="dust"></div>
 <div class="nebula"></div>
 <div class="stars"></div>
+<div class="noise"></div>
 
 <div class="card">
   <div class="title">💳 Pay via UPI</div>
@@ -164,8 +188,8 @@ body{
 
 <script>
 const p=new URLSearchParams(location.search)
-document.getElementById("amt").innerText=p.get("am")||"0"
-document.getElementById("payee").innerText=p.get("pn")?`Paying to: ${p.get("pn")}`:""
+amt.innerText=p.get("am")||"0"
+payee.innerText=p.get("pn")?`Paying to: ${p.get("pn")}`:""
 
 function pay(){
  location.href=
