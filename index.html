@@ -13,17 +13,16 @@
             justify-content: center;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-            /* 🌊 Deep aqua neon background */
+            /* 🌌 Dark non-aqua background */
             background: linear-gradient(
-                120deg,
-                #001f3f,
-                #003b6f,
-                #005f73,
-                #0077b6,
-                #0096c7
+                135deg,
+                #020024,
+                #04043a,
+                #0a0f3d,
+                #050a30
             );
-            background-size: 400% 400%;
-            animation: bgMove 16s ease infinite;
+            background-size: 300% 300%;
+            animation: bgMove 18s ease infinite;
         }
 
         @keyframes bgMove {
@@ -32,7 +31,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 💎 Electric aqua neon card */
+        /* 💎 Bright aqua neon card */
         .card {
             width: 100%;
             max-width: 360px;
@@ -52,10 +51,10 @@
             animation: cardMove 10s ease infinite;
 
             box-shadow:
-                0 0 35px rgba(0, 245, 255, 0.75),
-                0 30px 60px rgba(0,0,0,0.45);
+                0 0 40px rgba(0, 245, 255, 0.9),
+                0 30px 70px rgba(0,0,0,0.6);
 
-            color: #002b36;
+            color: #001e26;
         }
 
         @keyframes cardMove {
@@ -85,7 +84,7 @@
             margin-bottom: 24px;
         }
 
-        /* 🔹 Dark aqua button for contrast */
+        /* 🔹 Deep blue button for contrast */
         .pay-btn {
             width: 100%;
             padding: 14px;
@@ -97,12 +96,12 @@
 
             background: linear-gradient(
                 90deg,
-                #003b6f,
-                #005f73
+                #020024,
+                #04043a
             );
 
             color: #e0fbff;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.9);
+            box-shadow: 0 0 22px rgba(0, 245, 255, 0.8);
         }
 
         .pay-btn:active {
@@ -112,7 +111,7 @@
         .secure-text {
             margin-top: 18px;
             font-size: 13px;
-            opacity: 0.85;
+            opacity: 0.8;
         }
     </style>
 </head>
