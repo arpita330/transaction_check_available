@@ -111,46 +111,4 @@
 </script>
 
 </body>
-</html>        .secure-text {
-            margin-top: 18px;
-            font-size: 13px;
-            color: #6b7280;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="card">
-        <div class="title">
-            💳 Pay via UPI
-        </div>
-
-        <div class="amount">
-            Amount: ₹<span id="amount"></span>
-        </div>
-
-        <button class="pay-btn" onclick="pay()">
-            Pay Now
-        </button>
-
-        <div class="secure-text">
-            Secure UPI payment • Works with all UPI apps
-        </div>
-    </div>
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const pa = urlParams.get("pa");
-        const am = urlParams.get("am");
-
-        document.getElementById("amount").innerText = am || "0";
-
-        function pay() {
-            const upi = `upi://pay?pa=${pa}&am=${am}&cu=INR`;
-            window.location.href = upi;
-        }
-    </script>
-
-</body>
-  </html>
+</html>
