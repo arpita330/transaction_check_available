@@ -11,18 +11,53 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f2f4f7;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            overflow: hidden;
+        }
+
+        /* Neon light animation */
+        body::before,
+        body::after {
+            content: "";
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at center,
+                rgba(0, 255, 200, 0.25),
+                rgba(0, 0, 0, 0) 60%);
+            animation: neonMove 12s linear infinite;
+        }
+
+        body::after {
+            animation-delay: -6s;
+            background: radial-gradient(circle at center,
+                rgba(0, 140, 255, 0.25),
+                rgba(0, 0, 0, 0) 60%);
+        }
+
+        @keyframes neonMove {
+            0% {
+                transform: translate(-20%, -20%);
+            }
+            50% {
+                transform: translate(20%, 20%);
+            }
+            100% {
+                transform: translate(-20%, -20%);
+            }
         }
 
         .card {
+            position: relative;
             background: #ffffff;
             width: 100%;
             max-width: 360px;
             padding: 28px 24px;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
             text-align: center;
+            z-index: 2;
         }
 
         .title {
@@ -48,14 +83,15 @@
             font-size: 18px;
             border: none;
             border-radius: 10px;
-            background: #00c853;
+            background: linear-gradient(135deg, #00e676, #00c853);
             color: #ffffff;
             font-weight: 600;
             cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 120, 0.6);
         }
 
         .pay-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         .secure-text {
@@ -111,4 +147,4 @@
 </script>
 
 </body>
-</html>
+    </html>
