@@ -23,7 +23,7 @@ body{
 }
 
 /* ===============================
-   VIDEO BACKGROUND
+   VIDEO BACKGROUND ONLY
    =============================== */
 .video-bg{
   position:fixed;
@@ -31,56 +31,7 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
-  z-index:-12;
-  filter:contrast(1.1) saturate(1.1);
-}
-
-/* TAP TO PLAY OVERLAY */
-.tap-overlay{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(6px);
-  color:#e0fbff;
-  font-size:18px;
-  font-weight:600;
-  cursor:pointer;
-  z-index:20;
-}
-
-/* ===============================
-   AMOLED VIGNETTE
-   =============================== */
-.vignette{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at center, transparent 35%, #000 85%);
-  z-index:-8;
-}
-
-/* ===============================
-   PARALLAX STARS
-   =============================== */
-.stars{
-  position:fixed;
-  inset:0;
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, white, transparent),
-    radial-gradient(1px 1px at 30% 80%, white, transparent),
-    radial-gradient(1px 1px at 70% 60%, white, transparent),
-    radial-gradient(2px 2px at 50% 50%, white, transparent);
-  background-size:320px 320px;
-  animation:starsMove 180s linear infinite;
-  opacity:0.6;
-  z-index:-6;
-}
-
-@keyframes starsMove{
-  to{background-position:-700px 500px;}
+  z-index:-1;
 }
 
 /* ===============================
@@ -107,7 +58,7 @@ body{
     0 30px 90px rgba(0,0,0,0.9);
 
   color:#00252c;
-  z-index:5;
+  z-index:2;
 }
 
 @keyframes cardGlow{
@@ -165,16 +116,16 @@ body{
 <body>
 
 <!-- VIDEO BACKGROUND -->
-<video id="bgVideo" class="video-bg" loop playsinline>
+<video
+  id="bgVideo"
+  class="video-bg"
+  autoplay
+  loop
+  muted
+  playsinline
+>
   <source src="https://raw.githubusercontent.com/arpita330/transaction_check_available/main/night%20sky~2.mp4" type="video/mp4">
 </video>
-
-<div class="tap-overlay" id="tap">
-  ▶ Tap to play background sound
-</div>
-
-<div class="vignette"></div>
-<div class="stars"></div>
 
 <!-- PAYMENT CARD -->
 <div class="card">
@@ -195,14 +146,14 @@ body{
 
 <script>
 const video = document.getElementById("bgVideo");
-const tap = document.getElementById("tap");
 
-/* Enable sound + play */
-tap.onclick = () => {
-  video.muted = false;
-  video.play();
-  tap.style.display = "none";
-};
+/* Auto-unmute on first interaction (no popup, no message) */
+document.addEventListener("click", () => {
+  if(video.muted){
+    video.muted = false;
+    video.play();
+  }
+}, { once:true });
 
 /* Dynamic UPI */
 const params = new URLSearchParams(window.location.search);
@@ -226,4 +177,4 @@ function pay(){
 </script>
 
 </body>
-    </html>
+</html>
