@@ -12,26 +12,25 @@
             align-items: center;
             justify-content: center;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow: hidden;
 
-            /* 🌌 Dark non-aqua background */
-            background: linear-gradient(
-                135deg,
-                #020024,
-                #04043a,
-                #0a0f3d,
-                #050a30
-            );
-            background-size: 300% 300%;
-            animation: bgMove 18s ease infinite;
+            /* 🌌 Space color background */
+            background:
+                radial-gradient(circle at 20% 30%, rgba(138,43,226,0.45), transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255,0,255,0.35), transparent 45%),
+                radial-gradient(circle at 60% 80%, rgba(0,140,255,0.35), transparent 40%),
+                linear-gradient(120deg, #020024, #04043a, #050a30);
+            background-size: 200% 200%;
+            animation: spaceMove 25s linear infinite;
         }
 
-        @keyframes bgMove {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes spaceMove {
+            0%   { background-position: 0% 0%; }
+            50%  { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
-        /* 💎 Bright aqua neon card */
+        /* 💎 Aqua neon card */
         .card {
             width: 100%;
             max-width: 360px;
@@ -48,16 +47,16 @@
                 #00ffff
             );
             background-size: 300% 300%;
-            animation: cardMove 10s ease infinite;
+            animation: cardGlow 10s ease infinite;
 
             box-shadow:
-                0 0 40px rgba(0, 245, 255, 0.9),
-                0 30px 70px rgba(0,0,0,0.6);
+                0 0 45px rgba(0, 245, 255, 0.9),
+                0 30px 80px rgba(0,0,0,0.65);
 
-            color: #001e26;
+            color: #001b22;
         }
 
-        @keyframes cardMove {
+        @keyframes cardGlow {
             0%   { background-position: 0% 50%; }
             50%  { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -84,7 +83,6 @@
             margin-bottom: 24px;
         }
 
-        /* 🔹 Deep blue button for contrast */
         .pay-btn {
             width: 100%;
             padding: 14px;
@@ -101,7 +99,7 @@
             );
 
             color: #e0fbff;
-            box-shadow: 0 0 22px rgba(0, 245, 255, 0.8);
+            box-shadow: 0 0 22px rgba(0, 245, 255, 0.85);
         }
 
         .pay-btn:active {
