@@ -29,19 +29,17 @@
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
         }
 
         .amount {
             font-size: 18px;
-            margin-bottom: 24px;
+            margin-bottom: 10px;
         }
 
-        .amount span {
-            font-weight: 600;
+        .payee {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 24px;
         }
 
         .pay-btn {
@@ -61,6 +59,59 @@
         }
 
         .secure-text {
+            margin-top: 18px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="title">💳 Pay via UPI</div>
+
+    <div class="amount">
+        Amount: ₹<span id="amount">0</span>
+    </div>
+
+    <div class="payee" id="payee"></div>
+
+    <button class="pay-btn" onclick="pay()">Pay Now</button>
+
+    <div class="secure-text">
+        Secure UPI payment • Works with all UPI apps
+    </div>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+
+    const pa = params.get("pa") || "";
+    const pn = params.get("pn") || "";
+    const am = params.get("am") || "0";
+    const tr = params.get("tr") || "";
+    const tn = params.get("tn") || "";
+
+    document.getElementById("amount").innerText = am;
+    document.getElementById("payee").innerText = pn ? `Paying to: ${pn}` : "";
+
+    function pay() {
+        const upi =
+            "upi://pay?" +
+            "pa=" + encodeURIComponent(pa) +
+            "&pn=" + encodeURIComponent(pn) +
+            "&am=" + encodeURIComponent(am) +
+            "&cu=INR" +
+            "&tr=" + encodeURIComponent(tr) +
+            "&tn=" + encodeURIComponent(tn);
+
+        window.location.href = upi;
+    }
+</script>
+
+</body>
+</html>        .secure-text {
             margin-top: 18px;
             font-size: 13px;
             color: #6b7280;
