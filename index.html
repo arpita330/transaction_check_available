@@ -13,14 +13,14 @@
             justify-content: center;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-            /* 🌌 Cool neon moving background */
+            /* 🔵🟣 Cool neon background (NO yellow/green) */
             background: linear-gradient(
                 120deg,
-                #00f5ff,
+                #0d47ff,
+                #2979ff,
+                #651fff,
                 #7c4dff,
-                #00e676,
-                #ffc400,
-                #1de9b6
+                #b388ff
             );
             background-size: 400% 400%;
             animation: bgMove 14s ease infinite;
@@ -32,7 +32,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 🔥 Warm neon card */
+        /* 🔴🩷 Warm neon card (NO yellow/green) */
         .card {
             width: 100%;
             max-width: 360px;
@@ -42,17 +42,17 @@
 
             background: linear-gradient(
                 135deg,
-                #ff3d81,
-                #ff6f00,
                 #ff1744,
+                #ff4081,
+                #e040fb,
                 #d500f9,
-                #ff4081
+                #f50057
             );
             background-size: 300% 300%;
             animation: cardMove 10s ease infinite;
 
             box-shadow:
-                0 0 25px rgba(255, 64, 129, 0.45),
+                0 0 30px rgba(255, 64, 129, 0.5),
                 0 25px 50px rgba(0,0,0,0.35);
 
             color: #ffffff;
@@ -86,6 +86,7 @@
             margin-bottom: 24px;
         }
 
+        /* 🔵 Button stays blue to avoid green/yellow */
         .pay-btn {
             width: 100%;
             padding: 14px;
@@ -97,12 +98,12 @@
 
             background: linear-gradient(
                 90deg,
-                #00e676,
-                #1de9b6
+                #2979ff,
+                #651fff
             );
 
-            color: #003b1f;
-            box-shadow: 0 0 18px rgba(0, 230, 118, 0.8);
+            color: #ffffff;
+            box-shadow: 0 0 18px rgba(41, 121, 255, 0.8);
         }
 
         .pay-btn:active {
